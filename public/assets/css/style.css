@@ -1,0 +1,143 @@
+*{
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+}
+h1
+{
+    font-family: 'Roboto Slab', serif;
+}
+
+
+
+  .css-typing h1 {
+  border-right: .15em solid orange;
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  
+}
+.css-typing h1:nth-child(1) {
+  width: 10.5em;
+  -webkit-animation: type 2s steps(10, end);
+  animation: type 2s steps(10, end);
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  place-items: center;
+  
+}
+
+.css-typing h1:nth-child(2) {
+  width: 16.5em;
+  opacity: 0;
+  -webkit-animation: type2 2s steps(16, end);
+  animation: type2 2s steps(16, end);
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  
+}
+
+/* .css-typing h1:nth-child(3) {
+  width: 7.3em;
+  opacity: 0;
+  -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
+  animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+} */
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@-webkit-keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+/* @keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: tranparent;
+  }
+}
