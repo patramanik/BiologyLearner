@@ -1,4 +1,4 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
     <!-- Navbar Brand -->
     <a class="navbar-brand ps-3" href="{{ url('/dashboard') }}">
         <img src="{{ asset('assets/img/logo_biologyLearner.png') }}" alt="Logo" width="135" height="30">

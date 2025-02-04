@@ -7,8 +7,8 @@
         @if (session('message'))
             <div class="alert alert-success">{{ session('message') }}</div>
         @endif
-        <div class="table-responsive  table-bordered mt-3 ">
-            
+        <div class="card shadow table-responsive table-bordered mt-3 ">
+
             <table class="table  table-striped table-hover" slot="">
                 <thead class="bg-dark text-bg-dark ">
                     <tr class="">
@@ -70,7 +70,7 @@
                         </td>
                         <td>
                             <a href="{{url('/admin/edit/'.$catagory->id)}}" type="button" class="btn btn-dark btn-sm" style="margin: 2px 2px 2px 2px">Edit</a>
-                            <a href="{{url('/admin/destroy/'.$catagory->id)}}" type="button" class="btn btn-danger btn-sm" style="margin: 2px 2px 2px 2px">Delete</a>
+                            <button type="button" class="btn btn-danger btn-sm delete-category" data-id="{{$catagory->id}}" style="margin: 2px 2px 2px 2px">Delete</button>
                         </td>
                     </tr>
                     @endforeach
@@ -79,3 +79,31 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.delete-category').on('click', function() {
+            var categoryId = $(this).data('id');
+            if (confirm('Are you sure you want to delete this category?')) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/admin/destroy/' + categoryId,
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        alert('Category deleted successfully!');
+                        location.reload();
+                    },
+
+                    error: function(response) {
+                        alert('An error occurred. Please try again.');
+                    }
+                });
+            }
+        });
+    });
+</script>
+@endsection
+

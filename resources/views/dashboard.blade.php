@@ -129,7 +129,6 @@
     </div>
 </div>
 <!-- End User Comment -->
-
-    </div>
+</div>
 
 @endsection

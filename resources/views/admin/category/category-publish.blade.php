@@ -39,8 +39,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ url('/admin/publisg_catagory/' . $data->id) }}" type="button"
-                                            class="btn btn-success btn-sm" style="margin: 2px 2px 2px 2px">publish</a>
+                                        <button type="button" class="btn btn-success btn-sm publish-category" data-id="{{ $data->id }}" style="margin: 2px 2px 2px 2px">Publish</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -79,8 +78,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ url('/admin/not_publisg_catagory/' . $data->id) }}" type="button"
-                                            class="btn btn-danger btn-sm" style="margin: 2px 2px 2px 2px">Hide</a>
+                                        <button type="button" class="btn btn-danger btn-sm hide-category" data-id="{{ $data->id }}" style="margin: 2px 2px 2px 2px">Hide</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -90,4 +88,46 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.publish-category').on('click', function() {
+            var categoryId = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '/admin/publisg_catagory/' + categoryId,
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert('Category published successfully!');
+                    location.reload();
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+
+        $('.hide-category').on('click', function() {
+            var categoryId = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '/admin/not_publisg_catagory/' + categoryId,
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert('Category hidden successfully!');
+                    location.reload();
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+    });
+</script>
 @endsection
