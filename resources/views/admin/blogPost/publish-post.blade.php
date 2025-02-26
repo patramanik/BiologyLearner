@@ -39,8 +39,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ url('/admin/publish_post/' . $data->id) }}" type="button"
-                                            class="btn btn-success btn-sm" style="margin: 2px 2px 2px 2px">publish</a>
+                                        <button type="button" class="btn btn-success btn-sm publish-post" data-id="{{ $data->id }}" style="margin: 2px 2px 2px 2px">Publish</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -79,8 +78,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ url('/admin/not_publish_post/' . $data->id) }}" type="button"
-                                            class="btn btn-danger btn-sm" style="margin: 2px 2px 2px 2px">Hide</a>
+                                        <button type="button" class="btn btn-danger btn-sm hide-post" data-id="{{ $data->id }}" style="margin: 2px 2px 2px 2px">Hide</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -91,3 +89,47 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+<script>
+
+    $(document).ready(function() {
+        $('.publish-post').on('click', function() {
+            var postId = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '/admin/publish_post/' + postId,
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert('Post published successfully!');
+                    location.reload();
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+
+        $('.hide-post').on('click', function() {
+            var postId = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '/admin/not_publish_post/' + postId,
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert('Post hidden successfully!');
+                    location.reload();
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+    });
+</script>
+@endsection
+

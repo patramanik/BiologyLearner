@@ -38,11 +38,17 @@
         </div>
 
     </div>
+
+    <script>
+        @yield('content')
+    </script>
+
     <!-- Scripts -->
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
 </body>

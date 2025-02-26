@@ -8,7 +8,7 @@
                     <h4 class="mt-4">Edit Category</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('/admin/update/' . $category->id) }}" method="POST" enctype="multipart/form-data">
+                    <form id="editCategoryForm" action="{{ url('/admin/update/' . $category->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -67,4 +67,31 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('#editCategoryForm').on('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+
+                    alert('Category updated successfully!');
+                    // Optionally, you can redirect the user or update the UI
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                    // Optionally, handle validation errors and display them
+                }
+            });
+        });
+    });
+</script>
 @endsection

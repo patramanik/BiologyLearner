@@ -25,13 +25,13 @@
     </nav>
 
 <section class="min-vh-100 d-flex align-items-center justify-content-center">
-  <div class="card shadow w-100 mx-5">
+  <div class="card shadow w-80  mx-5">
     <div class="container">
       <!-- Row -->
       <div class="row">
         <!-- Left Column -->
-        <div class="col-md-6 d-flex align-items-center">
-          <img src="{{ asset('assets/img/welcome.jpg') }}" class="img-fluid" alt="Welcome Image" style="width: 100%;">
+        <div class="col-md-6 h-5 d-flex align-items-center">
+          <img src="{{ asset('assets/img/welcome.jpg') }}" class="img-fluid" alt="Welcome Image" style="width: 80%;">
         </div>
         <!-- Right Column -->
         <div class="col-md-6 text-center">
@@ -52,6 +52,9 @@
                 <a href="{{ route('login') }}" class="btn btn-outline-primary mx-3">
                   <strong>Login</strong>
                 </a>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}"><button type="button" class="btn btn-outline-primary"><strong>Register</strong></button></a>
+                @endif
               @endauth
             </div>
           @endif

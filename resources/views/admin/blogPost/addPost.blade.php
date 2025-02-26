@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ url('/admin/addpost') }}" method="POST" enctype="multipart/form-data">
+                    <form id="addPostForm" action="{{ url('/admin/addpost') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{-- <pre>
                             @php
@@ -105,6 +105,33 @@
                 console.error(error);
             });
     </script>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('#addPostForm').on('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                contentType: false,
+                processData: false,
+
+                success: function(response) {
+                    alert('Post added successfully!');
+                    // Optionally, you can reset the form or redirect the user
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                    // Optionally, handle validation errors and display them
+                }
+            });
+        });
+    });
+</script>
 @endsection
 
 

@@ -7,7 +7,7 @@
                 <h5 class="mt-2">AddCategory</h5>
             </div>
             <div class="card-body">
-                <form action="{{ url('/admin/addcategory') }}" method="POST" enctype="multipart/form-data">
+                <form id="addCategoryForm" action="{{ url('/admin/addcategory') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label class="mb-2">Category Name</label>
@@ -67,3 +67,31 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('#addCategoryForm').on('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    alert('Category added successfully!');
+                    // Optionally, you can reset the form or redirect the user
+                },
+                error: function(response) {
+
+                    alert('An error occurred. Please try again.');
+                    // Optionally, handle validation errors and display them
+                }
+            });
+        });
+    });
+</script>
+@endsection
+

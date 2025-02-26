@@ -84,8 +84,7 @@
                             <td>
                                 <a href="{{ url('/admin/editPost/' . $post->id) }}" type="button"
                                     class="btn btn-dark btn-sm" style="margin: 2px 2px 2px 2px">Edit</a>
-                                <a href="{{ url('/admin/destroypost/' . $post->id) }}" type="button"
-                                    class="btn btn-danger btn-sm" style="margin: 2px 2px 2px 2px">Delete</a>
+                                <button type="button" class="btn btn-danger btn-sm delete-post" data-id="{{ $post->id }}" style="margin: 2px 2px 2px 2px">Delete</button>
                             </td>
                         </tr>
                     @endforeach
@@ -94,4 +93,30 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.delete-post').on('click', function() {
+            var postId = $(this).data('id');
+            if (confirm('Are you sure you want to delete this post?')) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/admin/destroypost/' + postId,
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        alert('Post deleted successfully!');
+                        location.reload();
+                    },
+                    error: function(response) {
+                        alert('An error occurred. Please try again.');
+                    }
+                });
+            }
+        });
+    });
+</script>
 @endsection
