@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Core</div>
-                <a class="nav-link" href="{{url('/dashboard')}}">
+                <a class="nav-link" href="{{ url('/dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
@@ -18,8 +18,8 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{url('admin/addcategory')}}">add Category</a>
-                        <a class="nav-link" href="{{url('admin/category')}}">View Category</a>
+                        <a class="nav-link" href="{{ url('admin/addcategory') }}">add Category</a>
+                        <a class="nav-link" href="{{ url('admin/category') }}">View Category</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
@@ -31,8 +31,8 @@
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{url('/admin/addpost')}}">add Post</a>
-                        <a class="nav-link" href="{{url('admin/posts')}}">view Post</a>
+                        <a class="nav-link" href="{{ url('/admin/addpost') }}">add Post</a>
+                        <a class="nav-link" href="{{ url('admin/posts') }}">view Post</a>
                     </nav>
                 </div>
                 <div class="sb-sidenav-menu-heading">Addons</div>
@@ -44,10 +44,13 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Tables
                 </a>
-                <a class="nav-link" href="#">
-                    <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                    Users List
-                </a>
+                @if (auth()->check() && auth()->user()->user_role == 1)
+                    <a class="nav-link" href="{{route ('users-list')}}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Users List
+                    </a>
+                @endif
+
             </div>
         </div>
     </nav>
