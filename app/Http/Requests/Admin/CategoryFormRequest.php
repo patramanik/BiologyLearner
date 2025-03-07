@@ -44,6 +44,17 @@ class CategoryFormRequest extends FormRequest
                 'string'
             ],
         ];
+        if ($this->isMethod('post')) {
+            $rules['image'] = [
+                'required',
+                'mimes:jpeg,jpg,png'
+            ];
+        } else {
+            $rules['image'] = [
+                'nullable',
+                'mimes:jpeg,jpg,png'
+            ];
+        }
         return $rules;
     }
 }

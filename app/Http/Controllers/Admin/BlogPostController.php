@@ -74,8 +74,8 @@ class BlogPostController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('public/uploads/post/', $filename);
-            $url = asset('public/uploads/post/' . $filename);
+            $file->move('uploads/post/', $filename);
+            $url = asset('uploads/post/' . $filename);
             $post->image = $url;
         }
 
@@ -97,8 +97,8 @@ class BlogPostController extends Controller
         if ($request->hasFile('upload')) {
             $file = $request->file('upload'); // Get the uploaded file
             $filename = time() . '.' . $file->getClientOriginalExtension(); // Generate a unique filename
-            $file->move('public/uploads/post/upload/', $filename); // Move the file to the desired directory
-            $url = asset('public/uploads/post/upload/' . $filename); // Generate the URL for the uploaded file
+            $file->move('uploads/post/upload/', $filename); // Move the file to the desired directory
+            $url = asset('uploads/post/upload/' . $filename); // Generate the URL for the uploaded file
 
             return response()->json(['fileName' => $filename, 'uploaded' => 1, 'url' => $url]);
         }
@@ -136,8 +136,8 @@ class BlogPostController extends Controller
         }
         $file = $request->file('image');
         $filename = time() . '.' . $file->getClientOriginalExtension();
-        $file->move('public/uploads/post/', $filename);
-        $url = asset('public/uploads/post/' . $filename);
+        $file->move('uploads/post/', $filename);
+        $url = asset('uploads/post/' . $filename);
         $post->image = $url;
     }
 
@@ -154,7 +154,7 @@ class BlogPostController extends Controller
         if($post){
             $url = $post->image;
             $path = pathinfo($url, PATHINFO_BASENAME);
-            $imgLocation = 'public/uploads/post/'.$path;
+            $imgLocation = 'uploads/post/'.$path;
 
             if(File::exists($imgLocation)){
                 File::delete($imgLocation); // Fixed typo in variable name

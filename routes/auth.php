@@ -39,6 +39,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/users-list', [AuthenticatedSessionController::class, 'UsersList'])
         ->name('users-list');
+    Route::post('/suspend/{id}', [AuthenticatedSessionController::class, 'SuspendUser'])
+        ->name('admin.suspend');
+    // Route::post('/suspend/{id}', 'AdminController@suspendUser')->name('admin.suspend');
+
 
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');

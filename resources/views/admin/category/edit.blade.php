@@ -8,7 +8,12 @@
                     <h4 class="mt-4">Edit Category</h4>
                 </div>
                 <div class="card-body">
-                    <form id="editCategoryForm" action="{{ url('/admin/update/' . $category->id) }}" method="POST" enctype="multipart/form-data">
+                    <?php
+                    
+                    // dd($category);
+                    ?>
+                    <form id="editCategoryForm" action="{{ url('/admin/update/' . $category->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -31,15 +36,23 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="mb-2" for="image">Category Image</label>
-                            <div class="card">
+                            <div class="card p-3">
+                                @if (isset($category->image))
+                                    <img src="{{ $category->image }}" alt="Category Image" class="img-fluid mb-2" width="100">
+                                @endif
+                        
                                 <input type="file" class="form-control-file" id="image" name="image">
+                                <input type="hidden" name="old_image" value="{{ $category->image ?? '' }}">
                             </div>
+                        
                             <span class="alert-danger" style="color: red">
                                 @error('image')
                                     {{ $message }}
                                 @enderror
                             </span>
                         </div>
+                        
+
                         <div class="input-group mb-3">
                             <span class="input-group-text">Description</span>
                             <textarea class="form-control" name="description" aria-label="With textarea">{{ $category->meta_description }}</textarea>
@@ -70,28 +83,28 @@
 @endsection
 
 @section('scripts')
-<script>
-    $(document).ready(function() {
-        $('#editCategoryForm').on('submit', function(e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
+    <script>
+        $(document).ready(function() {
+            $('#editCategoryForm').on('submit', function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
 
-                    alert('Category updated successfully!');
-                    // Optionally, you can redirect the user or update the UI
-                },
-                error: function(response) {
-                    alert('An error occurred. Please try again.');
-                    // Optionally, handle validation errors and display them
-                }
+                        alert('Category updated successfully!');
+                        // Optionally, you can redirect the user or update the UI
+                    },
+                    error: function(response) {
+                        alert('An error occurred. Please try again.');
+                        // Optionally, handle validation errors and display them
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 @endsection
