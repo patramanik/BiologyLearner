@@ -24,6 +24,11 @@
                 </thead>
                 <tbody class="align-middle">
                     @foreach ($catagorys as $catagory )
+                    <?php
+                    // dd($catagory);
+                    
+                    ?>
+
                     <tr>
                         <td>{{$loop->index+1}}</td>
                         <td>{{$catagory->name}}</td>

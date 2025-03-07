@@ -46,8 +46,8 @@ class AuthenticatedSessionController extends Controller
         // If user exists and is blocked (user_status == 0), prevent login
         if ($user && (int) $user->user_status === 0) {
             return redirect()->route('login')
-            ->withInput($request->only('email'))
-            ->with('error', 'You are blocked, Contact Your Developer!');
+                ->withInput($request->only('email'))
+                ->with('error', 'You are blocked, Contact Your Developer!');
         }
 
         // Proceed with authentication
@@ -79,5 +79,17 @@ class AuthenticatedSessionController extends Controller
         $users = User::all();
         // return view('usersList/users');
         return view('usersList.users', compact('users'));
+    }
+    public function SuspendUser($id)
+    {
+        // dd($id);
+
+        $user = User::findOrFail($id);
+        $user->user_status = 0;
+
+        $user->save();
+        // dd($user);
+
+        return response()->json(['message' => 'User suspended successfully']);
     }
 }
