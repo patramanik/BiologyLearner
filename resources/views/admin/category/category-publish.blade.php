@@ -24,6 +24,7 @@
                         </thead>
                         <tbody class="align-middle">
                             @foreach ($catagorys as $data)
+                        
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $data->name }}</td>
