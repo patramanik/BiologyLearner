@@ -116,7 +116,7 @@
                                     'User suspended successfully.',
                                     'success'
                                 ).then(() => {
-                                    // Reload the page after confirming the alert
+                                   
                                     location.reload();
                                 });
                             },
