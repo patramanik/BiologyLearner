@@ -88,11 +88,11 @@
             </div>
         </div>
     </section>
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/decoupled-document/ckeditor.js"></script> --}}
-    <script src="{{ asset('public/ckeditor5/ckeditor.js') }}"></script>
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> --}}
-    <script>
-        ClassicEditor
+@endsection
+
+@section('scripts')
+<script>
+     ClassicEditor
             .create(document.querySelector('#editor'),{
                 ckfinder: {
                     uploadUrl:'{{route('admin.blogPost.upload').'?_token='.csrf_token()}}'
@@ -104,11 +104,7 @@
             .catch(error => {
                 console.error(error);
             });
-    </script>
-@endsection
 
-@section('scripts')
-<script>
     $(document).ready(function() {
         $('#addPostForm').on('submit', function(e) {
             e.preventDefault();
