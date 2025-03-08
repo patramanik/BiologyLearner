@@ -33,6 +33,26 @@ class ApiController extends Controller
         return response()->json(['data' => $data], 200);
     }
 
+    public function getPosts() {
+        $data = DB::table('post')
+            ->join('catagoris', 'post.category_id', '=', 'catagoris.id')
+            ->where('catagoris.status', '=', 1)
+            ->where('post.status', '=', 1)
+            ->select(
+                'post.id',
+                'post.category_id',
+                'catagoris.name',
+                'post.post_name',
+                'post.meta_title',
+                'post.image',
+                'post.Post_keywords',
+                'post.post_content'
+            )
+            ->orderBy('post.id')
+            ->get();
+
+        return response()->json(['data' => $data], 200);
+    }
 
 
     public function postData($category_id)

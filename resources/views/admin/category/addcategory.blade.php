@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Add Category')
+@section('title', 'Add-Category')
 @section('content')
 <div class="container-fluid px-4">
   <div class="card mt-3 mb-2">
@@ -46,17 +46,17 @@ $(document).ready(function() {
         minlength: 2
       },
       mataTile: {
-        required: true
+        required: false
       },
       image: {
         required: true,
         extension: "jpg|jpeg|png|gif"
       },
       description: {
-        required: true
+        required: false
       },
       keywords: {
-        required: true
+        required: false
       }
     },
     messages: {
@@ -96,6 +96,7 @@ $(document).ready(function() {
       $(element).removeClass(errorClass).addClass(validClass);
     },
     submitHandler: function(form) {
+        event.preventDefault();
       var formData = new FormData(form);
       $.ajax({
         type: 'POST',
@@ -105,7 +106,7 @@ $(document).ready(function() {
         processData: false,
         success: function(response) {
           alert('Category added successfully!');
-          window.location.href = '/admin/category'; 
+          window.location.href = '/admin/category';
         },
         error: function(response) {
           alert('An error occurred. Please try again.');
