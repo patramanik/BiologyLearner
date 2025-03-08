@@ -101,7 +101,7 @@
             var categoryId = $(this).data('id');
             if (confirm('Are you sure you want to delete this category?')) {
                 $.ajax({
-                    type: 'DELETE',
+                    type: 'GET',
                     url: '/admin/destroy/' + categoryId,
                     data: {
                         _token: '{{ csrf_token() }}'
