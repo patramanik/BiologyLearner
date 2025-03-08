@@ -2,15 +2,20 @@
 @section('title', 'post')
 @section('content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Posts</h1>
-
+        
         @if (session('message'))
             <div class="alert alert-success">{{ session('message') }}</div>
         @endif
 
-        <div class="table-responsive mt-3">
-            <table class="table table-striped table-hover">
-                <thead class="bg-dark text-white">
+        <div class="card shadow  mt-3">
+            <div class="card-header h4">
+                Posts List
+                <a href="{{ url('/admin/addpost') }}" class="btn btn-primary float-end">Add Post</a>
+            </div>
+            <div class="card-body p-2">
+            <div class="table-responsive">
+            <table id="post-table" class="table table-bordered table-striped">
+                <thead>
                     <tr>
                         <th>Sno.</th>
                         <th>Name</th>
@@ -23,7 +28,7 @@
                         <th>Action</th> <!-- Typo: Changed 'Acction' to 'Action' -->
                     </tr>
                 </thead>
-                <tbody>
+                    <tbody>
                     @foreach ($post as $post)
                         <!-- Changed the variable name to 'posts' -->
                         <tr>
@@ -88,8 +93,10 @@
                             </td>
                         </tr>
                     @endforeach
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+            </div>
         </div>
     </div>
 
@@ -98,6 +105,7 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
+        $('#post-table').DataTable();
         $('.delete-post').on('click', function() {
             var postId = $(this).data('id');
             if (confirm('Are you sure you want to delete this post?')) {

@@ -8,7 +8,7 @@
         <div class="container-fluid px-4">
             <div class="card mt-3 mb-2">
                 <div class="card-header">
-                    <h4 class="mt-4">Edit Post</h4>
+                    <h5>Edit Post</h5>
                 </div>
                 <div class="card-body">
                     <form id="editPostForm" action="{{ url('/admin/updatepost/' . $post->id) }}" method="POST" enctype="multipart/form-data">
@@ -85,11 +85,13 @@
             </div>
         </div>
     </section>
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/decoupled-document/ckeditor.js"></script> --}}
-    <script src="{{ asset('public/ckeditor5/ckeditor.js') }}"></script>
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> --}}
-    <script>
-        ClassicEditor
+
+@endsection
+
+@section('scripts')
+
+<script>
+     ClassicEditor
             .create(document.querySelector('#editor'),{
                 ckfinder: {
                     uploadUrl:'{{route('admin.blogPost.upload').'?_token='.csrf_token()}}'
@@ -101,11 +103,6 @@
             .catch(error => {
                 console.error(error);
             });
-    </script>
-@endsection
-
-@section('scripts')
-<script>
     $(document).ready(function() {
         $('#editPostForm').on('submit', function(e) {
             e.preventDefault();
