@@ -80,7 +80,7 @@ class CatagoryController extends Controller
                     File::delete($path);
                 }
             }
-    
+
             // Upload new image
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -90,7 +90,7 @@ class CatagoryController extends Controller
             // Keep old image if no new one is uploaded
             $category->image = $request->old_image;
         }
-        // dd($category);  
+        // dd($category);
 
         $category->meta_description = $data['description'];
         $category->c_keywords = $data['keywords'];
@@ -126,6 +126,7 @@ class CatagoryController extends Controller
 
     public function publish($id)
     {
+
         $catagory = Catagory::find($id);
 
         $catagory->status = 1;

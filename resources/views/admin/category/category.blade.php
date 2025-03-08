@@ -2,21 +2,16 @@
 @section('title', 'Category')
 @section('content')
     <div class="container-fluid px-4">
-        <!-- <h1 class="mt-4">Category</h1> -->
+        <h1 class="mt-4">Category</h1>
 
         @if (session('message'))
             <div class="alert alert-success">{{ session('message') }}</div>
         @endif
-        <div class="card shadow mt-3 ">
-            <div class="card-header h4">
-                Category List
-                <a href="{{ url('/admin/addcategory') }}" class="btn btn-primary float-end">Add Category</a>
-            </div>
-            <div class="card-body p-2">
-                <div class="table-responsive">
-                <table id="category-table" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
+        <div class="card shadow table-responsive table-bordered mt-3 ">
+
+            <table class="table  table-striped table-hover" slot="">
+                <thead class="bg-dark text-bg-dark ">
+                    <tr class="">
                         <th>Sno.</th>
                         <th>Name</th>
                         <th>Meta Title</th>
@@ -26,14 +21,9 @@
                         <th>Status</th>
                         <th>Acction</th>
                     </tr>
-                    </thead>
-                    <tbody class="align-middle">
+                </thead>
+                <tbody class="align-middle">
                     @foreach ($catagorys as $catagory )
-                    <?php
-                    // dd($catagory);
-
-                    ?>
-
                     <tr>
                         <td>{{$loop->index+1}}</td>
                         <td>{{$catagory->name}}</td>
@@ -84,10 +74,8 @@
                         </td>
                     </tr>
                     @endforeach
-                    </tbody>
-                </table>
-                </div>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
@@ -95,8 +83,6 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        $('#category-table').DataTable();
-        // Ajax request to delete category with SweetAlert confirmation
         $('.delete-category').on('click', function() {
             var categoryId = $(this).data('id');
             if (confirm('Are you sure you want to delete this category?')) {

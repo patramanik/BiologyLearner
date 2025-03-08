@@ -78,7 +78,6 @@
                                         @endif
                                     </td>
                                     <td>
-
                                         <button type="button" class="btn btn-danger btn-sm hide-category" data-id="{{ $data->id }}" style="margin: 2px 2px 2px 2px">Hide</button>
                                     </td>
                                 </tr>
