@@ -42,6 +42,8 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Include CKEditor JS -->
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
     <!-- Then load other scripts that depend on jQuery -->
@@ -51,7 +53,6 @@
 
     <!-- Yield page-specific scripts here (after jQuery is loaded) -->
     @yield('scripts')
-
     {{-- <script>
         console.log(typeof jQuery !== 'undefined' ? "jQuery is loaded! Version: " + jQuery.fn.jquery : "jQuery is NOT loaded!");
     </script> --}}
