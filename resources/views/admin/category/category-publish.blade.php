@@ -96,8 +96,8 @@
         $('.publish-category').on('click', function() {
             var categoryId = $(this).data('id');
             $.ajax({
-                type: 'POST',
-                url: '/admin/publisg_catagory/' + categoryId,
+                type: 'GET',
+                url: '{{url("/admin/publisg_catagory")}}/' + categoryId,
                 data: {
                     _token: '{{ csrf_token() }}'
                 },
@@ -114,8 +114,8 @@
         $('.hide-category').on('click', function() {
             var categoryId = $(this).data('id');
             $.ajax({
-                type: 'POST',
-                url: '/admin/not_publisg_catagory/' + categoryId,
+                type: 'GET',
+                url: '{{ url("admin/not_publish_category") }}/' + categoryId,
                 data: {
                     _token: '{{ csrf_token() }}'
                 },
