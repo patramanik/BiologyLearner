@@ -58,12 +58,12 @@
                                     <td>{{ $user->created_at->format('Y-m-d') }}</td>
 
                                     <td>
-                                        @if($user->user_status == 1)
-                                        <button class="btn btn-danger btn-xs suspend-user"
-                                            data-user-id="{{ $user->id }}">Suspend</button>
+                                        @if ($user->user_status == 1)
+                                            <button class="btn btn-danger btn-xs suspend-user"
+                                                data-user-id="{{ $user->id }}">Suspend</button>
                                         @elseif($user->user_status == 0)
-                                        <button class="btn btn-success btn-xs active-user"
-                                            data-user-id="{{ $user->id }}">Active</button>
+                                            <button class="btn btn-success btn-xs active-user"
+                                                data-user-id="{{ $user->id }}">Active</button>
                                         @endif
                                     </td>
 
@@ -79,7 +79,7 @@
 @endsection
 
 @section('scripts')
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#usersTable').DataTable();
             // Ajax request to suspend user with SweetAlert confirmation
@@ -116,7 +116,7 @@
                                     'User suspended successfully.',
                                     'success'
                                 ).then(() => {
-                                   
+
                                     location.reload();
                                 });
                             },
@@ -131,6 +131,106 @@
                         });
                     }
                 });
+            });
+            $('.active-user').click(function(e) {
+                e.preventDefault();
+                var userId = $(this).data('user-id');
+
+                // SweetAlert2 confirmation prompt
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Do you really want to active this user?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, active it!',
+                    cancelButtonText: 'No, cancel!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '/active/' + userId,
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                // Update the status cell if applicable
+                                var statusCell = $('tr[data-user-id="' + userId +
+                                    '"] .user-status');
+                                statusCell.html(
+                                    '<span class="btn btn-danger btn-xs">Suspended</span>'
+                                );
+
+                                Swal.fire(
+                                    'Activated!',
+                                    'User Active successfully.',
+                                    'success'
+                                ).then(() => {
+
+                                    location.reload();
+                                });
+                            },
+                            error: function(xhr) {
+                                Swal.fire(
+                                    'Error!',
+                                    'Error Active user.',
+                                    'error'
+                                );
+                                console.error(xhr.responseText);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script> --}}
+    <script>
+        $(document).ready(function() {
+            $('#usersTable').DataTable();
+
+            // Unified function to handle user status changes
+            function changeUserStatus(userId, action) {
+                let actionText = action === 'suspend' ? 'Suspend' : 'Activate';
+                let actionUrl = '/' + action + '/' + userId;
+                let newStatusText = action === 'suspend' ? 'Suspended' : 'Active';
+                let newStatusClass = action === 'suspend' ? 'btn-danger' : 'btn-success';
+
+                Swal.fire({
+                    title: `Are you sure?`,
+                    text: `Do you really want to ${actionText.toLowerCase()} this user?`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: `Yes, ${actionText} it!`,
+                    cancelButtonText: 'No, cancel!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: actionUrl,
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                Swal.fire(`${actionText}d!`,
+                                        `User ${newStatusText.toLowerCase()} successfully.`,
+                                        'success')
+                                    .then(() => location.reload());
+                            },
+                            error: function(xhr) {
+                                Swal.fire('Error!',
+                                    `Error ${actionText.toLowerCase()}ing user.`, 'error');
+                                console.error(xhr.responseText);
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Event listener for suspend and activate buttons
+            $('.suspend-user, .active-user').click(function(e) {
+                e.preventDefault();
+                let userId = $(this).data('user-id');
+                let action = $(this).hasClass('suspend-user') ? 'suspend' : 'active';
+                changeUserStatus(userId, action);
             });
         });
     </script>

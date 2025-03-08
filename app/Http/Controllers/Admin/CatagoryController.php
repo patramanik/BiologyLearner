@@ -9,9 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Admin\CategoryFormRequest;
-
-
-
+use App\Models\Post;
 
 class CatagoryController extends Controller
 {
@@ -80,7 +78,7 @@ class CatagoryController extends Controller
                     File::delete($path);
                 }
             }
-    
+
             // Upload new image
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -142,5 +140,24 @@ class CatagoryController extends Controller
         $catagory->update();
 
         return redirect()->back()->with('message', 'Category now Hide on your App');
+    }
+    public function DeleteCategory($id)
+    {
+        $categoryInUse = Post::where('category_id', $id)->exists();
+
+        if ($categoryInUse) {
+            if (request()->ajax()) {
+                return response()->json(['error' => 'Cannot delete category. Posts exist under this category.'], 400);
+            }
+            return redirect()->back()->with('error', 'Cannot delete category. Posts exist under this category.');
+        }
+
+        $catagory = Catagory::find($id);
+        $catagory->delete();
+
+        if (request()->ajax()) {
+            return response()->json(['message' => 'Category Deleted Successfully']);
+        }
+        return redirect()->back()->with('message', 'Category Deleted Successfully');
     }
 }

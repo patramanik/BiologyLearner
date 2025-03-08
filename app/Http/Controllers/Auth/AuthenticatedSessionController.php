@@ -82,14 +82,17 @@ class AuthenticatedSessionController extends Controller
     }
     public function SuspendUser($id)
     {
-        // dd($id);
-
         $user = User::findOrFail($id);
         $user->user_status = 0;
-
         $user->save();
-        // dd($user);
+        return response()->json(['message' => 'User Suspended successfully']);
+    }
+    public function ActiveUser($id)
+    {
 
-        return response()->json(['message' => 'User suspended successfully']);
+        $user = User::findOrFail($id);
+        $user->user_status = 1;
+        $user->save();
+        return response()->json(['message' => 'User Activated successfully']);
     }
 }

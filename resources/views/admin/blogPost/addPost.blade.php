@@ -118,7 +118,8 @@
 
                 success: function(response) {
                     alert('Post added successfully!');
-                    // Optionally, you can reset the form or redirect the user
+                    window.location.href = '/admin/posts';
+
                 },
                 error: function(response) {
                     alert('An error occurred. Please try again.');

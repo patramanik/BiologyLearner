@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function () {
         ->name('users-list');
     Route::post('/suspend/{id}', [AuthenticatedSessionController::class, 'SuspendUser'])
         ->name('admin.suspend');
+    Route::post('/active/{id}', [AuthenticatedSessionController::class, 'ActiveUser'])
+        ->name('admin.active');
     // Route::post('/suspend/{id}', 'AdminController@suspendUser')->name('admin.suspend');
 
 
