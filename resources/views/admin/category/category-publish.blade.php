@@ -39,7 +39,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button id="publish-category" type="button" class="btn btn-success btn-sm publish-category" data-id="{{ $data->id }}" style="margin: 2px 2px 2px 2px">Publish</button>
+                                        <button type="button" class="btn btn-success btn-sm publish-category" data-id="{{ $data->id }}" style="margin: 2px 2px 2px 2px">Publish</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -78,7 +78,6 @@
                                         @endif
                                     </td>
                                     <td>
-
                                         <button type="button" class="btn btn-danger btn-sm hide-category" data-id="{{ $data->id }}" style="margin: 2px 2px 2px 2px">Hide</button>
                                     </td>
                                 </tr>
@@ -94,42 +93,41 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-    $(document).on('click', '.publish-category', function() {
-        var categoryId = $(this).data('id');
-        $.ajax({
-            type: 'GET',
-            url: '{{ url("admin/publish_category") }}/' + categoryId,  // Corrected URL
-            data: {
-                _token: '{{ csrf_token() }}'
-            },
-            success: function(response) {
-                alert('Category published successfully!');
-                location.reload();
-            },
-            error: function(response) {
-                alert('An error occurred. Please try again.');
-            }
+        $('.publish-category').on('click', function() {
+            var categoryId = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '/admin/publisg_catagory/' + categoryId,
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert('Category published successfully!');
+                    location.reload();
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+
+        $('.hide-category').on('click', function() {
+            var categoryId = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '/admin/not_publisg_catagory/' + categoryId,
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert('Category hidden successfully!');
+                    location.reload();
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                }
+            });
         });
     });
-
-    $(document).on('click', '.hide-category', function() {
-        var categoryId = $(this).data('id');
-        $.ajax({
-            type: 'GET',
-            url: '{{ url("admin/not_publish_category") }}/' + categoryId,  // Corrected URL
-            data: {
-                _token: '{{ csrf_token() }}'
-            },
-            success: function(response) {
-                alert('Category hidden successfully!');
-                location.reload();
-            },
-            error: function(response) {
-                alert('An error occurred. Please try again.');
-            }
-        });
-    });
-});
-
 </script>
 @endsection
