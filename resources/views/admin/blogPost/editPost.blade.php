@@ -8,7 +8,7 @@
         <div class="container-fluid px-4">
             <div class="card mt-3 mb-2">
                 <div class="card-header">
-                    <h4 class="mt-4">Edit Post</h4>
+                    <h5>Edit Post</h5>
                 </div>
                 <div class="card-body">
                     <form id="editPostForm" action="{{ url('/admin/updatepost/' . $post->id) }}" method="POST" enctype="multipart/form-data">

@@ -4,7 +4,7 @@
     <div class="container-fluid px-4">
         <div class="card mt-3 mb-2">
             <div class="card-header">
-                <h5 class="mt-2">AddCategory</h5>
+                <h5>Add Category</h5>
             </div>
             <div class="card-body">
                 <form id="addCategoryForm" action="{{ url('/admin/addcategory') }}" method="POST" enctype="multipart/form-data">

@@ -5,11 +5,11 @@
         <div class="container-fluid px-4">
             <div class="card mt-3 mb-2">
                 <div class="card-header">
-                    <h4 class="mt-4">Edit Category</h4>
+                    <h5>Edit Category</h5>
                 </div>
                 <div class="card-body">
                     <?php
-                    
+
                     // dd($category);
                     ?>
                     <form id="editCategoryForm" action="{{ url('/admin/update/' . $category->id) }}" method="POST"
@@ -40,18 +40,18 @@
                                 @if (isset($category->image))
                                     <img src="{{ $category->image }}" alt="Category Image" class="img-fluid mb-2" width="100">
                                 @endif
-                        
+
                                 <input type="file" class="form-control-file" id="image" name="image">
                                 <input type="hidden" name="old_image" value="{{ $category->image ?? '' }}">
                             </div>
-                        
+
                             <span class="alert-danger" style="color: red">
                                 @error('image')
                                     {{ $message }}
                                 @enderror
                             </span>
                         </div>
-                        
+
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">Description</span>

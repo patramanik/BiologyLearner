@@ -58,10 +58,13 @@
                                     <td>{{ $user->created_at->format('Y-m-d') }}</td>
 
                                     <td>
+                                        @if($user->user_status == 1)
                                         <button class="btn btn-danger btn-xs suspend-user"
                                             data-user-id="{{ $user->id }}">Suspend</button>
+                                        @elseif($user->user_status == 0)
                                         <button class="btn btn-success btn-xs active-user"
                                             data-user-id="{{ $user->id }}">Active</button>
+                                        @endif
                                     </td>
 
 
@@ -79,7 +82,6 @@
     <script>
         $(document).ready(function() {
             $('#usersTable').DataTable();
-
             // Ajax request to suspend user with SweetAlert confirmation
             $('.suspend-user').click(function(e) {
                 e.preventDefault();

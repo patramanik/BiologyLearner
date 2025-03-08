@@ -8,7 +8,7 @@
         <div class="container-fluid px-4">
             <div class="card mt-3 mb-2">
                 <div class="card-header">
-                    <h4 class="mt-4">Add Post</h4>
+                    <h5 >Add Post</h5>
                 </div>
 
                 <div class="card-body">
