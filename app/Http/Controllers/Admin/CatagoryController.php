@@ -153,6 +153,7 @@ class CatagoryController extends Controller
         }
 
         $catagory = Catagory::find($id);
+
         $catagory->delete();
 
         if (request()->ajax()) {

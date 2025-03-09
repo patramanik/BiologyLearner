@@ -22,27 +22,23 @@ class CategoryFormRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'name' =>[
+            'name' => [
                 'required',
                 'string',
                 'max:200'
             ],
-            'mataTile' =>[
-                'required',
-                'string',
+            'mataTile' => [
+
                 'max:200'
             ],
-            'image' =>[
+            'image' => [
                 'required',
                 'mimes:jpeg,jpg,png'
             ],
-            'description' =>[
+            'description' => [
                 'required',
             ],
-            'keywords' =>[
-                'required',
-                'string'
-            ],
+            'keywords' => [],
         ];
         if ($this->isMethod('post')) {
             $rules['image'] = [

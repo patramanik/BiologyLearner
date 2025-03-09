@@ -18,7 +18,7 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ url('admin/addcategory') }}">add Category</a>
+                        <a class="nav-link" href="{{ url('admin/addcategory') }}">Add Category</a>
                         <a class="nav-link" href="{{ url('admin/category') }}">View Category</a>
                     </nav>
                 </div>
@@ -31,8 +31,8 @@
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ url('/admin/addpost') }}">add Post</a>
-                        <a class="nav-link" href="{{ url('admin/posts') }}">view Post</a>
+                        <a class="nav-link" href="{{ url('/admin/addpost') }}">Add Post</a>
+                        <a class="nav-link" href="{{ url('admin/posts') }}">View Post</a>
                     </nav>
                 </div>
                 <div class="sb-sidenav-menu-heading">Addons</div>
