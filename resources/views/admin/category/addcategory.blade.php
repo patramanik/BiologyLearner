@@ -81,82 +81,82 @@
 @endsection
 
 @section('scripts')
-<script>
-$(document).ready(function() {
-  var validator = $("#addCategoryForm").validate({
-    rules: {
-      name: {
-        required: true,
-        minlength: 2
-      },
-      mataTile: {
-        required: true
-      },
-      image: {
-        required: true,
-        extension: "jpg|jpeg|png|gif"
-      },
-      description: {
-        required: true
-      },
-      keywords: {
-        required: true
-      }
-    },
-    messages: {
-      name: {
-        required: "Please enter a category name",
-        minlength: "Category name must be at least 2 characters long"
-      },
-      mataTile: {
-        required: "Please enter a meta title"
-      },
-      image: {
-        required: "Please select an image",
-        extension: "Please upload a valid image file (jpg, jpeg, png, gif)"
-      },
-      description: {
-        required: "Please provide a description"
-      },
-      keywords: {
-        required: "Please enter some keywords"
-      }
-    },
-    errorClass: "is-invalid",
-    validClass: "is-valid",
-    errorElement: "div",
-    errorPlacement: function(error, element) {
-      error.addClass("invalid-feedback");
-      if (element.prop("type") === "file") {
-        error.insertAfter(element.parent());
-      } else {
-        error.insertAfter(element);
-      }
-    },
-    highlight: function(element, errorClass, validClass) {
-      $(element).addClass(errorClass).removeClass(validClass);
-    },
-    unhighlight: function(element, errorClass, validClass) {
-      $(element).removeClass(errorClass).addClass(validClass);
-    },
-    submitHandler: function(form) {
-      var formData = new FormData(form);
-      $.ajax({
-        type: 'POST',
-        url: $(form).attr('action'),
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(response) {
-          alert('Category added successfully!');
-          window.location.href = '/admin/category';
-        },
-        error: function(response) {
-          alert('An error occurred. Please try again.');
-        }
-      });
-    }
-  });
+    <script>
+        $(document).ready(function() {
+            var validator = $("#addCategoryForm").validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 2
+                    },
+                    mataTile: {
+                        required: false
+                    },
+                    image: {
+                        required: true,
+                        extension: "jpg|jpeg|png|gif"
+                    },
+                    description: {
+                        required: false
+                    },
+                    keywords: {
+                        required: false
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Please enter a category name",
+                        minlength: "Category name must be at least 2 characters long"
+                    },
+                    mataTile: {
+                        required: "Please enter a meta title"
+                    },
+                    image: {
+                        required: "Please select an image",
+                        extension: "Please upload a valid image file (jpg, jpeg, png, gif)"
+                    },
+                    description: {
+                        required: "Please provide a description"
+                    },
+                    keywords: {
+                        required: "Please enter some keywords"
+                    }
+                },
+                errorClass: "is-invalid",
+                validClass: "is-valid",
+                errorElement: "div",
+                errorPlacement: function(error, element) {
+                    error.addClass("invalid-feedback");
+                    if (element.prop("type") === "file") {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass(errorClass).removeClass(validClass);
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass(errorClass).addClass(validClass);
+                },
+                submitHandler: function(form) {
+                    var formData = new FormData(form);
+                    $.ajax({
+                        type: 'POST',
+                        url: $(form).attr('action'),
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            // alert('Category added successfully!');
+                            window.location.href = '/admin/category';
+                        },
+                        error: function(response) {
+                            alert('An error occurred. Please try again.');
+                        }
+                    });
+                }
+            });
 
             // **Fix for Image Validation**
             $("#image").change(function() {

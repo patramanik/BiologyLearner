@@ -8,7 +8,7 @@
         <i class="fas fa-bars"></i>
     </button>
     <!-- Navbar Search -->
-    <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    {{-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
             <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
                 aria-describedby="btnNavbarSearch" />
@@ -16,7 +16,16 @@
                 <i class="fas fa-search"></i>
             </button>
         </div>
-    </form> -->
+    </form> --}}
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{{ route('search') }}" method="GET">
+        <div class="input-group">
+            <input class="form-control" type="text" name="q" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+    
     <!-- Navbar -->
       <!-- Right-aligned Navbar Content -->
     <div class="ms-auto d-flex align-items-center p-2">

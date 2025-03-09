@@ -100,7 +100,7 @@
         $(document).ready(function() {
             $('#category-table').DataTable();
 
-            $('.delete-category').click(function(e) {
+            $(document).on('click', '.delete-category', function(e) {
                 e.preventDefault();
                 var catId = $(this).data('id');
 
