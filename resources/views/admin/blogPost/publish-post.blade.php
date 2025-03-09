@@ -125,26 +125,6 @@
                 });
             });
 
-<<<<<<< HEAD
-    $(document).ready(function() {
-        $('#post-published').DataTable();
-        $('#post-publish').DataTable();
-        $('.publish-post').on('click', function() {
-            var postId = $(this).data('id');
-            $.ajax({
-                type: 'POST',
-                url: '/admin/publish_post/' + postId,
-                data: {
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    alert('Post published successfully!');
-                    location.reload();
-                },
-                error: function(response) {
-                    alert('An error occurred. Please try again.');
-                }
-=======
             $('.hide-post').on('click', function() {
                 var postId = $(this).data('id');
                 $.ajax({
@@ -174,7 +154,6 @@
                         });
                     }
                 });
->>>>>>> kaushik
             });
         });
     </script>
