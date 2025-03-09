@@ -47,6 +47,7 @@
 
     <!-- Include CKEditor JS -->
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <!-- <script src="//cdn.ckeditor.com/4.25.1-lts/full/ckeditor.js"></script> -->
 
     <!-- Then load other scripts that depend on jQuery -->
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>

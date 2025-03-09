@@ -73,7 +73,7 @@
                         </div>
                         <div class=" mb-3">
                             <label for="editor" class="form-label">Post Content</label>
-                            <textarea class="form-control" name="Post_Content" id="editor" rows="5" ></textarea>
+                            <textarea class="ckeditor form-control" name="Post_Content" id="editor" rows="5" ></textarea>
                             <span class="alert-danger" style="color: red">
                                 @error('Post_Content')
                                     {{ $message }}
