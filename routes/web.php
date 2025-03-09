@@ -33,9 +33,9 @@ Route::controller(CatagoryController::class)->group(function () {
         Route::get('/edit/{id}', 'edit')->name('admin.category.edit');
         Route::put('/update/{id}', 'update');
         Route::get('/destroy/{id}', 'destroy');
-        Route::get('/publisg_catagory/{id}', 'publish');
+        Route::get('/publish_catagory/{id}', 'publish');
         Route::get('/publish', 'approval')->name('admin.category.category-publish');
-        Route::get('/not_publisg_catagory/{id}', 'hide');
+        Route::get('/not_publish_category/{id}', 'hide');
         Route::delete('/delete-category/{id}', 'DeleteCategory');
     });
 })->middleware('auth');
