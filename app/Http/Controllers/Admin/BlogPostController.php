@@ -58,14 +58,16 @@ class BlogPostController extends Controller
 
     public function submit(Request $request)
     {
-        $data = $request->validate([
-            'catagory_id'   => 'required|exists:catagoris,id',
-            'post_name' => 'required|string|max:200',
-            'metaTile' => 'max:200',
-            'image' => 'required|mimes:jpeg,jpg,png',
-            'Post_keywords' => 'max:200',
-            'Post_Content' => 'required|string',
-        ]);
+        $data = $request->validate();
+
+        // [
+        //     'catagory_id'   => 'required|exists:catagoris,id',
+        //     'post_name' => 'required|string|max:200',
+        //     'metaTile' => 'nullable|max:200',
+        //     'image' => 'required|mimes:jpeg,jpg,png',
+        //     'Post_keywords' => 'nullable|max:200',
+        //     'Post_Content' => 'required|string',
+        // ]
 
         $post = new Post;
         $post->category_id = $data['catagory_id'];
@@ -115,15 +117,16 @@ class BlogPostController extends Controller
     public function update(Request $request, $id)
     {
         // Remove the $request->validated() and use validate() method
-        $request->validate([
-            'catagory_id' => 'required',
-            'post_name' => 'required|string|max:200',
-            'metaTile' => 'required|string|max:200',
-            'image' => 'nullable|mimes:jpeg,jpg,png',
-            'Post_keywords' => 'required|string',
-            'Post_Content' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'catagory_id' => 'required',
+        //     'post_name' => 'required|string|max:200',
+        //     'metaTile' => 'nullable|string|max:200',
+        //     'image' => 'nullable|mimes:jpeg,jpg,png',
+        //     'Post_keywords' => 'nullable|string',
+        //     'Post_Content' => 'required|string',
+        // ]);
 
+        $request ->validate();
         $post = Post::find($id);
         $post->category_id = $request->input('catagory_id');
         $post->post_name = $request->input('post_name');

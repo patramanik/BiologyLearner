@@ -25,10 +25,10 @@
             </button>
         </div>
     </form>
-    
+
     <!-- Navbar -->
       <!-- Right-aligned Navbar Content -->
-    <div class="ms-auto d-flex align-items-center p-2">
+    <!-- <div class="ms-auto d-flex align-items-center p-2"> -->
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -51,5 +51,5 @@
                 </ul>
             </li>
         </ul>
-    </div>
+    <!-- </div> -->
 </nav>

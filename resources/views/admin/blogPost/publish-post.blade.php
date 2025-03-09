@@ -11,9 +11,9 @@
             {{-- start not published catagorys --}}
             <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 m-3 ">
                 <h4 class="m-2">Not Published</h4>
-                <div class="table-responsive-col  table-bordered">
-                    <table class="table  table-striped table-hover" slot="">
-                        <thead class="bg-dark text-bg-dark ">
+                <div class="table-responsive">
+                    <table id="post-publish" class="table table-bordered table-striped table-hover" slot="">
+                        <thead>
                             <tr>
                                 <th>Sno.</th>
                                 <th>Name</th>
@@ -51,9 +51,9 @@
             {{-- End not published catagorys --}}
             <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 m-3">
                 <h4 class="m-2"> Published</h4>
-                <div class="table-responsive-col  table-bordered">
-                    <table class="table  table-striped table-hover" slot="">
-                        <thead class="bg-dark text-bg-dark ">
+                <div class="table-responsive">
+                    <table id="post-published" class="table table-bordered table-striped table-hover">
+                        <thead>
                             <tr>
                                 <th>Sno.</th>
                                 <th>Name</th>
@@ -94,6 +94,8 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+            $('#post-publish').DataTable();
+            $('#post-published').DataTable();
             $('.publish-post').on('click', function() {
                 var postId = $(this).data('id');
                 $.ajax({

@@ -117,7 +117,7 @@
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
@@ -163,10 +163,10 @@
                     minlength: 3
                 },
                 metaTile: {
-                    // optional
+                    required: false
                 },
                 Post_keywords: {
-                    // optional
+                    required: false
                 },
                 image: {
                     required: true,
