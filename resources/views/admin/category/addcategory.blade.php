@@ -97,7 +97,7 @@
                         extension: "jpg|jpeg|png|gif"
                     },
                     description: {
-                        required: true
+                        required: false
                     },
                     keywords: {
                         required: false

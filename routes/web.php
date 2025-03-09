@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\CatagoryController;
 use App\Http\Controllers\Admin\AdminDashbordController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,5 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+
 
 require __DIR__ . '/auth.php';

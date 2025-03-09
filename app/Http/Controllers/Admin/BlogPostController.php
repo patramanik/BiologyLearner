@@ -59,11 +59,11 @@ class BlogPostController extends Controller
     public function submit(Request $request)
     {
         $data = $request->validate([
-            'catagory_id' => 'required',
+            'catagory_id'   => 'required|exists:catagoris,id',
             'post_name' => 'required|string|max:200',
-            'metaTile' => 'required|string|max:200',
+            'metaTile' => 'max:200',
             'image' => 'required|mimes:jpeg,jpg,png',
-            'Post_keywords' => 'required|string',
+            'Post_keywords' => 'max:200',
             'Post_Content' => 'required|string',
         ]);
 

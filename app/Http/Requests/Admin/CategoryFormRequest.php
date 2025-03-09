@@ -36,7 +36,7 @@ class CategoryFormRequest extends FormRequest
                 'mimes:jpeg,jpg,png'
             ],
             'description' => [
-                'required',
+                
             ],
             'keywords' => [],
         ];
