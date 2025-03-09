@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('catagoris',function (Blueprint $table){
             $table->id();
             $table->string('name');
-            $table->string('mata_title');
+            $table->string('mata_title')->nullable();
             $table->string('image');
-            $table->text('c_keywords');
-            $table->text('meta_description');
+            $table->text('c_keywords')->nullable();
+            $table->text('meta_description')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->timestamps();
