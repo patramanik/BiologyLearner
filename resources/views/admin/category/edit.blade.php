@@ -50,6 +50,40 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="mb-3">
+                                    <label class="form-label">
+                                        Keywords
+                                    </label>
+                                    <input type="text" name="keywords" value="{{ $category->c_keywords }}"
+                                        class="form-control" placeholder="Enter Keywords">
+                                    <span class="alert-danger" style="color: red">
+                                        @error('keywords')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">
+                                        Description
+                                    </label>
+                                    <textarea class="form-control" name="description" id="description" rows="2"
+                                        placeholder="Enter Description">{{ $category->meta_description }}</textarea>
+                                </div>
+                                <span class="alert-danger" style="color: red">
+                                    @error('description')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Third row: Description -->
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-sm-3 text-center">
+                                <div class="mb-3">
                                     <label class="form-label" for="image">
                                         Category Image <span class="text-danger">*</span>
                                     </label>
@@ -68,43 +102,10 @@
                                     </span>
                                 </div>
                             </div>
-
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">
-                                        Keywords
-                                    </label>
-                                    <input type="text" name="keywords" value="{{ $category->c_keywords }}"
-                                        class="form-control" placeholder="Enter Keywords">
-                                    <span class="alert-danger" style="color: red">
-                                        @error('keywords')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Third row: Description -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="mb-3">
-                                    <label for="description" class="form-label">
-                                        Description
-                                    </label>
-                                    <textarea class="form-control" name="description" id="description" rows="3"
-                                        placeholder="Enter Description">{{ $category->meta_description }}</textarea>
-                                </div>
-                                <span class="alert-danger" style="color: red">
-                                    @error('description')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
-                            </div>
                         </div>
 
                         <!-- Centered submit button -->
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-sm-12 text-center">
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </div>

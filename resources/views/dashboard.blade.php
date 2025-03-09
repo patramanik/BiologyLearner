@@ -103,9 +103,9 @@
         <!-- User Comment -->
         <div class="card shadow mt-3">
             <h4 class="m-2">User Comment</h4>
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead class="bg-dark text-light">
+            <div class="card-body table-responsive">
+                <table id="user-comment" class="table table-bordered table-striped">
+                    <thead>
                         <tr>
                             <th>Sno.</th>
                             <th>Name</th>
@@ -131,15 +131,16 @@
                 </table>
             </div>
         </div>
-    
     </div>
 
 
 @endsection
 @section('scripts')
-    {{-- <script>
+    <script>
         $(document).ready(function() {
-            console.log("jQuery is loaded! Version: " + jQuery.fn.jquery);
+            $('#user-comment').DataTable();
+
+            // console.log("jQuery is loaded! Version: " + jQuery.fn.jquery);
         });
-    </script> --}}
+    </script>
 @endsection
