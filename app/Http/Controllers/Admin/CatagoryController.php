@@ -93,6 +93,7 @@ class CatagoryController extends Controller
         $category->meta_description = $data['description'];
         $category->c_keywords = $data['keywords'];
         $category->created_by = Auth::user()->id;
+        // dd($category);
         $category->save();
 
         return redirect('admin/category')->with('message', 'Category update Successfully');

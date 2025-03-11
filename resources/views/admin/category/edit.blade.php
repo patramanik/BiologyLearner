@@ -68,8 +68,7 @@
                                     <label for="description" class="form-label">
                                         Description
                                     </label>
-                                    <textarea class="form-control" name="description" id="description" rows="2"
-                                        placeholder="Enter Description">{{ $category->meta_description }}</textarea>
+                                    <textarea class="form-control" name="description" id="description" rows="2" placeholder="Enter Description">{{ $category->meta_description }}</textarea>
                                 </div>
                                 <span class="alert-danger" style="color: red">
                                     @error('description')
@@ -93,7 +92,8 @@
                                                 width="100">
                                         @endif
                                         <input type="file" class="form-control-file" id="image" name="image">
-                                        <input type="hidden" name="old_image" id="old_image" value="{{ $category->image ?? '' }}">
+                                        <input type="hidden" name="old_image" id="old_image"
+                                            value="{{ $category->image ?? '' }}">
                                     </div>
                                     <span class="alert-danger" style="color: red">
                                         @error('image')
@@ -168,14 +168,28 @@
                         contentType: false,
                         processData: false,
                         success: function(response) {
-                            alert('Category updated successfully!');
-                            // Optionally, you can redirect the user or update the UI
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Category updated successfully!',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '/admin/category';
+                                }
+                            });
                         },
                         error: function(response) {
-                            alert('An error occurred. Please try again.');
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'An error occurred. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                         }
                     });
                     return false;
+
                 }
             });
         });

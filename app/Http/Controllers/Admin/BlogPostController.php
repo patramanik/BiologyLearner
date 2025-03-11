@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 use App\Models\Catagory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -59,16 +58,14 @@ class BlogPostController extends Controller
 
     public function submit(Request $request)
     {
-        $data = $request->validate();
-
-        // [
-        //     'catagory_id'   => 'required|exists:catagoris,id',
-        //     'post_name' => 'required|string|max:200',
-        //     'metaTile' => 'nullable|max:200',
-        //     'image' => 'required|mimes:jpeg,jpg,png',
-        //     'Post_keywords' => 'nullable|max:200',
-        //     'Post_Content' => 'required|string',
-        // ]
+        $data = $request->validate([
+            'catagory_id'   => 'required|exists:catagoris,id',
+            'post_name' => 'required|string|max:200',
+            'metaTile' => 'max:200',
+            'image' => 'required|mimes:jpeg,jpg,png',
+            'Post_keywords' => 'max:200',
+            'Post_Content' => 'required|string',
+        ]);
 
         $post = new Post;
         $post->category_id = $data['catagory_id'];
@@ -111,29 +108,22 @@ class BlogPostController extends Controller
 
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
-        $categoryName = Catagory::where('id', $post->category_id)->value('name');
-
-        // Add category name inside the $post object dynamically
-        $post->category_name = $categoryName;;
-
-        // dd($post);
+        $post = Post::findOrFail($id); // Use findOrFail to handle not found cases.
         return view('admin.blogPost.editPost', compact('post'));
     }
 
     public function update(Request $request, $id)
     {
         // Remove the $request->validated() and use validate() method
-        // $request->validate([
-        //     'catagory_id' => 'required',
-        //     'post_name' => 'required|string|max:200',
-        //     'metaTile' => 'nullable|string|max:200',
-        //     'image' => 'nullable|mimes:jpeg,jpg,png',
-        //     'Post_keywords' => 'nullable|string',
-        //     'Post_Content' => 'required|string',
-        // ]);
+        $request->validate([
+            'catagory_id' => 'required',
+            'post_name' => 'required|string|max:200',
+            'metaTile' => 'required|string|max:200',
+            'image' => 'nullable|mimes:jpeg,jpg,png',
+            'Post_keywords' => 'required|string',
+            'Post_Content' => 'required|string',
+        ]);
 
-        $request ->validate();
         $post = Post::find($id);
         $post->category_id = $request->input('catagory_id');
         $post->post_name = $request->input('post_name');
@@ -218,11 +208,12 @@ class BlogPostController extends Controller
             if (File::exists($imgLocation)) {
                 File::delete($imgLocation);
             }
-            $post->delete();
-            if (request()->ajax()) {
-                return response()->json(['message' => 'Post Deleted Successfully']);
-            }
+        $post->delete();
+
+        if (request()->ajax()) {
+            return response()->json(['message' => 'Post Deleted Successfully']);
         }
         return redirect()->back()->with('message', 'Post Deleted Successfully');
+    }
     }
 }
