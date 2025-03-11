@@ -47,7 +47,7 @@
                                 </span>
                             </div>
                         </div>
-                    <!-- Second row: Meta Title and Keywords -->
+                        <!-- Second row: Meta Title and Keywords -->
                         <div class="row">
                             <div class="col-sm-6 mb-3">
                                 <label class="mb-2">Mata Title</label>
@@ -107,9 +107,13 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-primary ">Submit</button>
+                        <!-- Fifth row: Submit Button -->
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>
