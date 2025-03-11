@@ -88,7 +88,7 @@ class CatagoryController extends Controller
             // Keep old image if no new one is uploaded
             $category->image = $request->old_image;
         }
-        // dd($category);  
+        // dd($category);
 
         $category->meta_description = $data['description'];
         $category->c_keywords = $data['keywords'];
@@ -141,6 +141,8 @@ class CatagoryController extends Controller
 
         return redirect()->back()->with('message', 'Category now Hide on your App');
     }
+
+
     public function DeleteCategory($id)
     {
         $categoryInUse = Post::where('category_id', $id)->exists();
@@ -153,12 +155,20 @@ class CatagoryController extends Controller
         }
 
         $catagory = Catagory::find($id);
+        if($catagory){
+            $url = $catagory->image;
+            $path = pathinfo($url, PATHINFO_BASENAME);
+            $imgLocation = 'uploads/category/' . $path;
 
-        $catagory->delete();
-
-        if (request()->ajax()) {
-            return response()->json(['message' => 'Category Deleted Successfully']);
+            if (File::exists($imgLocation)) {
+                File::delete($imgLocation);
+            }
+            $catagory->delete();
+            if (request()->ajax()) {
+                return response()->json(['message' => 'Category Deleted Successfully']);
+            }
         }
+
         return redirect()->back()->with('message', 'Category Deleted Successfully');
     }
 }

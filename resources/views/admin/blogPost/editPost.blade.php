@@ -19,35 +19,53 @@
                                 print_r($errors->all());
                             @endphp
                         </pre> --}}
-                        <div class="mb-3">
-                            <label class="mb-2"> Selected Category</label>
-                            <select class="form-select" name="catagory_id" aria-label="Default select example">
-                                <option value="{{$post->category_id}}">{{$post->category_id}}</option>
-                            </select>
-                            <span class="alert-danger" style="color: red">
-                                @error('catagory_id')
-                                    {{ $message }}
-                                @enderror
-                            </span>
+                        <!-- First row: Select Category and Post Name -->
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <label class="mb-2"> Selected Category</label>
+                                <select class="form-select" name="catagory_id" aria-label="Default select example">
+                                    <option value="{{$post->category_id}}">{{$post->category_name}}</option>
+                                </select>
+                                <span class="alert-danger" style="color: red">
+                                    @error('catagory_id')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <div class="col-sm-6 mb-3">
+                                <label class="mb-2">Post Name</label>
+                                <input for="text" name="post_name" value="{{$post->post_name}}" class="form-control">
+                                <span class="alert-danger" style="color: red">
+                                    @error('post_name')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="mb-2">Post Name</label>
-                            <input for="text" name="post_name" value="{{$post->post_name}}" class="form-control">
-                            <span class="alert-danger" style="color: red">
-                                @error('post_name')
-                                    {{ $message }}
-                                @enderror
-                            </span>
+                    <!-- Second row: Meta Title and Keywords -->
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <label class="mb-2">Mata Title</label>
+                                <input for="text" name="metaTile" value="{{$post->meta_title}}" class="form-control">
+                                <span class="alert-danger" style="color: red">
+                                    @error('metaTile')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <label class="mb-2">Keywords</label>
+                                <input for="texi" name="Post_keywords" value="{{$post->Post_keywords}}" class="form-control">
+                                <span class="aleart-danger" style="color: red">
+                                    @error('Post_keywords')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="mb-2">Mata Title</label>
-                            <input for="text" name="metaTile" value="{{$post->meta_title}}" class="form-control">
-                            <span class="alert-danger" style="color: red">
-                                @error('metaTile')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
+
+
                         <div class="form-group mb-3">
                             <label class="mb-2" for="image">Post Image</label>
                             <div class="card">
@@ -59,15 +77,7 @@
                                 @enderror
                             </span>
                         </div>
-                        <div class="mb-3">
-                            <label class="mb-2">Keywords</label>
-                            <input for="texi" name="Post_keywords" value="{{$post->Post_keywords}}" class="form-control">
-                            <span class="aleart-danger" style="color: red">
-                                @error('Post_keywords')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
+
                         <div class=" mb-3">
                             <label for="editor" class="form-label">Post Content</label>
                             <textarea class="form-control" name="Post_Content" id="editor" rows="5" >{{$post->post_content}}</textarea>

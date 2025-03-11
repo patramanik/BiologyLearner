@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 use App\Models\Catagory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -110,7 +111,13 @@ class BlogPostController extends Controller
 
     public function edit($id)
     {
-        $post = Post::findOrFail($id); // Use findOrFail to handle not found cases.
+        $post = Post::findOrFail($id);
+        $categoryName = Catagory::where('id', $post->category_id)->value('name');
+
+        // Add category name inside the $post object dynamically
+        $post->category_name = $categoryName;;
+
+        // dd($post);
         return view('admin.blogPost.editPost', compact('post'));
     }
 
@@ -203,10 +210,18 @@ class BlogPostController extends Controller
     public function DeletePost($id)
     {
         $post = Post::find($id);
-        $post->delete();
+        if($post){
+            $url = $post->image;
+            $path = pathinfo($url, PATHINFO_BASENAME);
+            $imgLocation = 'uploads/post/' . $path;
 
-        if (request()->ajax()) {
-            return response()->json(['message' => 'Post Deleted Successfully']);
+            if (File::exists($imgLocation)) {
+                File::delete($imgLocation);
+            }
+            $post->delete();
+            if (request()->ajax()) {
+                return response()->json(['message' => 'Post Deleted Successfully']);
+            }
         }
         return redirect()->back()->with('message', 'Post Deleted Successfully');
     }
