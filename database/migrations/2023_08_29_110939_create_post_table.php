@@ -16,9 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('catagoris');
             $table->string('post_name');
-            $table->string('meta_title');
+            $table->string('meta_title')->nullable();
             $table->string('image');
-            $table->string('Post_keywords');
+            $table->string('Post_keywords')->nullable();
             $table->longText('post_content');
             $table->tinyInteger('status')->default('0');
             $table->unsignedBigInteger('created_by')->nullable();
