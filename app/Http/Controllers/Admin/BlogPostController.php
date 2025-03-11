@@ -108,7 +108,11 @@ class BlogPostController extends Controller
 
     public function edit($id)
     {
-        $post = Post::findOrFail($id); // Use findOrFail to handle not found cases.
+        $post = Post::findOrFail($id);
+        $categoryName = Catagory::where('id', $post->category_id)->value('name');
+
+        // Add category name inside the $post object dynamically
+        $post->category_name = $categoryName;
         return view('admin.blogPost.editPost', compact('post'));
     }
 

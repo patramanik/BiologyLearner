@@ -22,7 +22,9 @@
                         <!-- First row: Select Category and Post Name -->
                         <div class="row">
                             <div class="col-sm-6 mb-3">
-                                <label class="mb-2"> Selected Category</label>
+                                <label class="mb-2"> Selected Category
+                                    <span class="text-danger">*</span>
+                                </label>
                                 <select class="form-select" name="catagory_id" aria-label="Default select example">
                                     <option value="{{$post->category_id}}">{{$post->category_name}}</option>
                                 </select>
@@ -34,7 +36,9 @@
                             </div>
 
                             <div class="col-sm-6 mb-3">
-                                <label class="mb-2">Post Name</label>
+                                <label class="mb-2">Post Name
+                                    <span class="text-danger">*</span>
+                                </label>
                                 <input for="text" name="post_name" value="{{$post->post_name}}" class="form-control">
                                 <span class="alert-danger" style="color: red">
                                     @error('post_name')
@@ -65,21 +69,11 @@
                             </div>
                         </div>
 
-
-                        <div class="form-group mb-3">
-                            <label class="mb-2" for="image">Post Image</label>
-                            <div class="card">
-                                <input type="file" class="form-control-file" id="image" name="image">
-                            </div>
-                            <span class="alert-danger" style="color: red">
-                                @error('image')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
-
-                        <div class=" mb-3">
-                            <label for="editor" class="form-label">Post Content</label>
+                        <!-- Third row: Post Content -->
+                        <div class="mb-3">
+                            <label for="editor" class="form-label">Post Content
+                                <span class="text-danger">*</span>
+                            </label>
                             <textarea class="form-control" name="Post_Content" id="editor" rows="5" >{{$post->post_content}}</textarea>
                             <span class="alert-danger" style="color: red">
                                 @error('Post_Content')
@@ -87,6 +81,32 @@
                                 @enderror
                             </span>
                         </div>
+
+                        <!-- Second row: Post Image and Keywords -->
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-sm-3 text-center">
+                                <div class="mb-3">
+                                    <label class="form-label" for="image">
+                                        Post Image <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="card p-3">
+                                        @if (isset($post->image))
+                                            <img src="{{ $post->image }}" alt="Post Image" class="img-fluid mb-2"
+                                                width="100">
+                                        @endif
+                                        <input type="file" class="form-control-file" id="image" name="image">
+                                        <input type="hidden" name="old_image" id="old_image"
+                                            value="{{ $post->image ?? '' }}">
+                                    </div>
+                                    <span class="alert-danger" style="color: red">
+                                        @error('image')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary ">Submit</button>
                         </div>
@@ -99,6 +119,13 @@
 @endsection
 
 @section('scripts')
+<!-- Add this CSS rule to enforce the CKEditor editable area height -->
+<style>
+    /* Force the CKEditor editable area to always have a minimum height of 250px */
+    .ck-editor__editable {
+        min-height: 250px !important;
+    }
+</style>
 
 <script>
      ClassicEditor

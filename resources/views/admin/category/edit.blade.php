@@ -46,7 +46,7 @@
                             </div>
                         </div>
 
-                        <!-- Second row: Category Image and Keywords -->
+                    <!-- Third row: Description -->
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="mb-3">
@@ -78,7 +78,8 @@
                             </div>
                         </div>
 
-                        <!-- Third row: Description -->
+
+                    <!-- Second row: Category Image and Keywords -->
 
                         <div class="row d-flex justify-content-center">
                             <div class="col-sm-3 text-center">
