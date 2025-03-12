@@ -104,6 +104,7 @@
                     data: {
                         _token: '{{ csrf_token() }}'
                     },
+                    
                     success: function(response) {
                         Swal.fire({
                             icon: 'success',

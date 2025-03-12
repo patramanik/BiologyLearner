@@ -122,8 +122,9 @@
                                 <td>{{ $data->user_email }}</td>
                                 <td>{{ $data->comment }}</td>
                                 <td>
-                                    <a href="{{ url('/admin/delet_commend/' . $data->id) }}" type="button"
-                                        class="btn btn-success btn-sm" style="margin: 2px 2px 2px 2px">Delete</a>
+                                    <button type="button" data-id="{{ $data->id }}" class="btn btn-success btn-sm delete-comment" style="margin: 2px 2px 2px 2px" >
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -139,6 +140,37 @@
     <script>
         $(document).ready(function() {
             $('#user-comment').DataTable();
+
+            $('.delete-comment').on('click', function() {
+                var commentId = $(this).data('id');
+                $.ajax({
+                    type: 'POST',
+                    url: '/delete-commend/' + commentId,
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Delete!',
+                            text: 'Comment delete successfully!',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(response) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'An error occurred. Please try again.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
 
             // console.log("jQuery is loaded! Version: " + jQuery.fn.jquery);
         });

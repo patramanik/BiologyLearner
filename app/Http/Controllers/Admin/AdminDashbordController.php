@@ -20,6 +20,7 @@ class AdminDashbordController extends Controller
     }
 
     public function deletCommend($id){
+
         $commend = Comment::find($id);
 
         if($commend)

@@ -148,11 +148,24 @@
                         contentType: false,
                         processData: false,
                         success: function(response) {
-                            // alert('Category added successfully!');
-                            window.location.href = '/admin/category';
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Category added successfully!',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '/admin/category';
+                                }
+                            });
                         },
                         error: function(response) {
-                            alert('An error occurred. Please try again.');
+                            Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'An error occurred. Please try again.',
+                            confirmButtonText: 'OK'
+                            });
                         }
                     });
                 }

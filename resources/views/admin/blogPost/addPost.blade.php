@@ -218,11 +218,27 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                        alert('Post added successfully!');
-                        window.location.href = '/admin/posts';
+                        // alert('Post added successfully!');
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Post added!',
+                            text: 'Post added successfully!',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = '/admin/posts';
+                            }
+                        });
+
                     },
                     error: function(response) {
-                        alert('An error occurred. Please try again.');
+                        // alert('An error occurred. Please try again.');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'An error occurred. Please try again.',
+                            confirmButtonText: 'OK'
+                        });
                     }
                 });
             }

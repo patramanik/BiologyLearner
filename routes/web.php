@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 
-Route::controller(CatagoryController::class)->group(function () {});
+
 
 
 Route::controller(CatagoryController::class)->group(function () {
@@ -54,12 +54,14 @@ Route::controller(BlogPostController::class)->group(function () {
         Route::get('/post-publish', 'approval')->name('admin.blogPost.publish-post');
         Route::get('/publish_post/{id}', 'publish');
         Route::get('/not_publish_post/{id}', 'hide');
-        Route::get('/delet_commend/{id}', 'deletCommend');
         Route::delete('/delete-post/{id}', 'DeletePost');
     });
     Route::get('/dashbord/catagory', 'catagory');
 })->middleware('auth');
 
+
+Route::post('/delete-commend/{id}', [AdminDashbordController::class, 'deletCommend'])
+->middleware('auth')->name('deletecommend');
 
 // Admin Routes
 Route::get('dashboard', [AdminDashbordController::class, 'index'])
