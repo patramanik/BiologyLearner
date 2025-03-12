@@ -7,12 +7,12 @@
         @if (session('message'))
             <div class="alert alert-success">{{ session('message') }}</div>
         @endif
-        <div class="row">
+        <div class="row m-1">
             {{-- start not published catagorys --}}
             <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 m-3 ">
                 <h4 class="m-2">Not publish</h4>
                 <div class="card-body table-responsive">
-                    <table id="catagory-publish" class="table table-bordered table-striped table-hover" slot="">
+                    <table id="catagory-publish" class="table table-bordered table-striped table-hover mt-3">
                         <thead>
                             <tr>
                                 <th>Sno.</th>
@@ -49,10 +49,10 @@
                 </div>
             </div>
             {{-- End not published categorys --}}
-            <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 m-3">
+            <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 mt-3">
                 <h4 class="m-2"> Published</h4>
                 <div class="table-responsive ">
-                    <table id="catagory-published" class="table table-bordered table-striped table-hover">
+                    <table id="catagory-published" class="table table-bordered table-striped table-hover mt-3">
                         <thead>
                             <tr>
                                 <th>Sno.</th>

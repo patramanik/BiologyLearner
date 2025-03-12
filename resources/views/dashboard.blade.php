@@ -104,7 +104,7 @@
         <div class="card shadow mt-3">
             <h4 class="m-2">User Comment</h4>
             <div class="card-body table-responsive">
-                <table id="user-comment" class="table table-bordered table-striped">
+                <table id="user-comment" class="table table-bordered table-striped mt-3">
                     <thead>
                         <tr>
                             <th>Sno.</th>

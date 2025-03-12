@@ -7,12 +7,12 @@
         @if (session('message'))
             <div class="alert alert-success">{{ session('message') }}</div>
         @endif
-        <div class="row">
+        <div class="row m-1">
             {{-- start not published catagorys --}}
-            <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 m-3 ">
+            <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
                 <h4 class="m-2">Not Published</h4>
                 <div class="table-responsive">
-                    <table id="post-publish" class="table table-bordered table-striped table-hover" slot="">
+                    <table id="post-publish" class="table table-bordered table-striped table-hover mt-3">
                         <thead>
                             <tr>
                                 <th>Sno.</th>
@@ -49,10 +49,10 @@
                 </div>
             </div>
             {{-- End not published catagorys --}}
-            <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 m-3">
+            <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 mt-3">
                 <h4 class="m-2"> Published</h4>
                 <div class="table-responsive">
-                    <table id="post-published" class="table table-bordered table-striped table-hover">
+                    <table id="post-published" class="table table-bordered table-striped table-hover mt-3">
                         <thead>
                             <tr>
                                 <th>Sno.</th>
@@ -87,6 +87,7 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
         </div>
     </div>
 @endsection
@@ -104,7 +105,7 @@
                     data: {
                         _token: '{{ csrf_token() }}'
                     },
-                    
+
                     success: function(response) {
                         Swal.fire({
                             icon: 'success',

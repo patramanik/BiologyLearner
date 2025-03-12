@@ -14,7 +14,7 @@
             </div>
             <div class="card-body p-2">
                 <div class="table-responsive">
-                    <table id="post-table" class="table table-bordered table-striped">
+                    <table id="post-table" class="table table-bordered table-striped mt-3">
                         <thead>
                             <tr>
                                 <th>Sno.</th>
@@ -25,7 +25,7 @@
                                 <th>Description</th>
                                 <th>Keywords</th>
                                 <th>Status</th>
-                                <th>Action</th> 
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -124,7 +124,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             url: '/admin/delete-post/' + postId,
-                            type: 'POST', 
+                            type: 'POST',
                             data: {
                                 _method: 'DELETE'
                             },

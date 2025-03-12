@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="usersTable" class="table table-bordered table-striped">
+                    <table id="usersTable" class="table table-bordered table-striped mt-3">
                         <thead>
                             <tr>
                                 <th>ID</th>

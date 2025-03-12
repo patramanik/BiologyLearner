@@ -14,7 +14,7 @@
             </div>
             <div class="card-body p-2">
                 <div class="table-responsive">
-                    <table id="category-table" class="table table-bordered table-striped">
+                    <table id="category-table" class="table table-bordered table-striped mt-3">
                         <thead>
                             <tr>
                                 <th>Sno.</th>
