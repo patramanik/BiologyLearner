@@ -113,7 +113,7 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
@@ -155,12 +155,24 @@
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    alert('Post updated successfully!');
-                    // Optionally, you can redirect the user or update the UI
+                    Swal.fire({
+                                title: 'Success!',
+                                text: 'Post updated successfully!',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '/admin/posts';
+                                }
+                            });
                 },
                 error: function(response) {
-                    alert('An error occurred. Please try again.');
-                    // Optionally, handle validation errors and display them
+                    Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'An error occurred. Please try again.',
+                            confirmButtonText: 'OK'
+                        });
                 }
             });
         });

@@ -122,9 +122,9 @@ class BlogPostController extends Controller
         $request->validate([
             'catagory_id' => 'required',
             'post_name' => 'required|string|max:200',
-            'metaTile' => 'required|string|max:200',
+            'metaTile' => 'max:200',
             'image' => 'nullable|mimes:jpeg,jpg,png',
-            'Post_keywords' => 'required|string',
+            'Post_keywords' => 'max:200',
             'Post_Content' => 'required|string',
         ]);
 
