@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\ApiController;
+use App\Http\Controllers\api\PostApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,15 @@ Route::get('/posts/{id?}', [ApiController::class, 'postList']);
 Route::get('/data',[ApiController::class,'index']);
 Route::get('/get-post',[ApiController::class,'getPosts']);
 
+
 Route::get('/catagorys/{id?}', [ApiController::class, 'catagoryList']);
 Route::get('/search/{name?}', [ApiController::class, 'search']);
 Route::Post('/comment',[ApiController::class,'comment']);
 Route::get('/postdata/{category_id}',[ApiController::class,'postData']);
 Route::get('/hedePosts',[ApiController::class,'hedePosts']);
+
+//New post API routes
+Route::get('/getPosts', [PostApiController::class, 'index']);
 
 
 
