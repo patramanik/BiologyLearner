@@ -19,6 +19,7 @@
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ url('admin/addcategory') }}">Add Category</a>
+                        <a class="nav-link" href="{{ url('/admin/publish') }}">Category Publish</a>
                         <a class="nav-link" href="{{ url('admin/category') }}">View Category</a>
                     </nav>
                 </div>
@@ -32,6 +33,7 @@
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ url('/admin/addpost') }}">Add Post</a>
+                        <a class="nav-link" href="{{ url('/admin/post-publish') }}">Post Publish</a>
                         <a class="nav-link" href="{{ url('admin/posts') }}">View Post</a>
                     </nav>
                 </div>

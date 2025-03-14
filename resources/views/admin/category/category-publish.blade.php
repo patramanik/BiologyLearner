@@ -7,12 +7,12 @@
         @if (session('message'))
             <div class="alert alert-success">{{ session('message') }}</div>
         @endif
-        <div class="row m-1">
+        <!-- <div class="row m-1"> -->
             {{-- start not published catagorys --}}
-            <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 m-3 ">
+            <div class="card col-12  mt-3 ml-2 mr-5 mb-3 ">
                 <h4 class="m-2">Not publish</h4>
                 <div class="card-body table-responsive">
-                    <table id="catagory-publish" class="table table-bordered table-striped table-hover mt-3">
+                    <table id="catagory-publish" class="table table-bordered table-hover mt-3">
                         <thead>
                             <tr>
                                 <th>Sno.</th>
@@ -29,7 +29,7 @@
                                     <td>{{ $data->name }}</td>
                                     <td>
                                         <img src="{!! $data->image !!}" class="img-thumbnail" alt="imges"
-                                            height="50px" width="70px">
+                                            height="40px" width="50px">
                                     </td>
                                     <td>
                                         @if ($data->status == 1)
@@ -49,10 +49,10 @@
                 </div>
             </div>
             {{-- End not published categorys --}}
-            <div class="card col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 mt-3">
+            <div class="card col-12  mt-3 ml-2 mr-5 mb-3">
                 <h4 class="m-2"> Published</h4>
-                <div class="table-responsive ">
-                    <table id="catagory-published" class="table table-bordered table-striped table-hover mt-3">
+                <div class="card-body table-responsive ">
+                    <table id="catagory-published" class="table table-bordered table-hover mt-3">
                         <thead>
                             <tr>
                                 <th>Sno.</th>
@@ -69,7 +69,7 @@
                                     <td>{{ $data->name }}</td>
                                     <td>
                                         <img src="{!! $data->image !!}" class="img-thumbnail" alt="imges"
-                                            height="50px" width="70px">
+                                            height="40px" width="50px">
                                     </td>
                                     <td>
                                         @if ($data->status == 1)
@@ -88,7 +88,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 @endsection
 
