@@ -1,7 +1,7 @@
 <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
     <!-- Navbar Brand -->
     <a class="navbar-brand ps-3" href="{{ url('/dashboard') }}">
-        <img src="{{ asset('assets/img/logo_biologyLearner.png') }}" alt="Logo" width="135" height="30">
+        <img src="{{ asset('public/assets/img/logo_biologyLearner.png') }}" alt="Logo" width="135" height="30">
     </a>
     <!-- Sidebar Toggle -->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">

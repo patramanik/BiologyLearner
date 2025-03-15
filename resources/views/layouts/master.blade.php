@@ -9,7 +9,7 @@
 
     <!-- Fonts and Styles -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="{{ asset('assets/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('public/assets/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -18,9 +18,9 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/assets/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/assets/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -53,9 +53,9 @@
     <!-- <script src="//cdn.ckeditor.com/4.25.1-lts/full/ckeditor.js"></script> -->
 
     <!-- Then load other scripts that depend on jQuery -->
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('public/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('public/assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Yield page-specific scripts here (after jQuery is loaded) -->
     @yield('scripts')

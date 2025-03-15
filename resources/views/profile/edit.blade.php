@@ -12,7 +12,7 @@
     <header class="py-3 bg-white border-bottom">
         <div class="container">
             <a class="navbar-brand ps-3" href="{{ url('/dashboard') }}">
-                <img src="{{ asset('assets/img/logo_biologyLearner.png') }}" alt="Logo" width="135" height="40">
+                <img src="{{ asset('public/assets/img/logo_biologyLearner.png') }}" alt="Logo" width="135" height="40">
             </a>
         </div>
     </header>

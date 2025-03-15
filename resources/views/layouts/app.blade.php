@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('assets/img/logo_biologyLearner.png') }}" alt="Logo" width="135" height="30">
+                    <img src="{{ asset('public/assets/img/logo_biologyLearner.png') }}" alt="Logo" width="135" height="30">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
